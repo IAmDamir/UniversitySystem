@@ -43,3 +43,26 @@ ostream &operator<<(ostream &os, const ACM& acm) {
 
   return os;
 }
+
+istream &operator<<(istream &is, ACM &acm) {
+  ACM acm1;
+
+  string topicOfTheDay;
+  map<string, string> location;
+  int numberOfLocations;
+  string key, value;
+  int numberOfPresentations;
+
+  is >> topicOfTheDay;
+  cout << "Please write number of locations that you would like to include: " << endl;
+  is >> numberOfLocations;
+  for (int i = 0; i < numberOfLocations; ++i) {
+    is >> key >> value;
+    location.insert(pair<string, string>(key, value));
+  }
+  is >> numberOfPresentations;
+
+  acm = ACM(topicOfTheDay, location, numberOfPresentations);
+
+  return is;
+}

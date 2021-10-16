@@ -23,6 +23,10 @@ public:
   void setConferenceLocation(const string &conferenceLocation);
   void setConferenceName(const string &conferenceName);
   void setTopicNames(const set<string> &topicNames);
+
+  friend ostream& operator<<(ostream& os, const IEEE& ieee);
+  friend istream& operator>>(istream& is, IEEE& ieee);
+
 private:
   string conferenceName;
   string conferenceLocation;

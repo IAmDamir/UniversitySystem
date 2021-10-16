@@ -7,9 +7,9 @@
 #define UNIVERSITYSYSTEM_STUDENT_H
 
 #include <iostream>
+#include <vector>
 #include "Course.h"
 #include "Activities/ACM.h"
-#include "Activities/Activities.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ template<typename activities>
 class Student {
 public:
   explicit Student(const activities& activity, const string& name = "Unknown", const string& ID = "00000000", int age = 0,
-                   const Course& course = Course()) {
+                   const vector<Course>& course = {Course()}) {
     this->name = name;
     this->course = course;
     this->age = age;
@@ -39,7 +39,7 @@ public:
   int getAge() const {
   return age;
 }
-  const Course &getCourse() const {
+  const vector<Course> &getCourse() const {
   return course;
 }
   const activities &getActivity() const {
@@ -55,31 +55,45 @@ public:
   void setAge(int age) {
   this->age = age;
 }
-  void setCourse(const Course &course) {
+  void setCourse(const vector<Course> &course) {
   this->course = course;
 }
   void setActivity(const activities& activity) {
   this->activity = activity;
 }
 
-  friend ostream& operator<<(ostream& out, const Student<activities> &student) {
-    out << "The Name of student is: " << student.getName() << endl;
-    out << "The ID of student is: " << student.getID() << endl;
-    out << "The Age of student is: " << student.getAge() << endl;
-    out << student.getCourse();
-    out << student.getActivity();
+  friend ostream& operator<<(ostream& os, const Student<activities> &student) {
 
-    return out;
+
+      os << "Name              ID                 Age    Courses     Activities\n";
+      os << "------------------------------------------------------------------\n";
+      os << student.name << "      " << student.ID << "     " << student.age << "   " << student.course[0] << "   " << student.activity << '\n';
+      for (int i = 1; i < student.course.size(); i++) {
+        os << "                                           " << student.course[i] << '\n';
+      }
+
+      return os;
+    /*
+    os << "The Name of student is: " << student.getName() << endl;
+    os << "The ID of student is: " << student.getID() << endl;
+    os << "The Age of student is: " << student.getAge() << endl;
+    vector<Course> courses = student.getCourse();
+    const auto f = [&os](const Course& course){};
+    os << student.getCourse();
+    os << student.getActivity();
+
+    return os;
+     */
   }
-  friend istream& operator>>(istream& in, Student<activities> student) {
-    return in;
+  friend istream& operator>>(istream& is, Student<activities> student) {
+    return is;
   }
 
 private:
   string name;
   string ID;
   int age{};
-  Course course;
+  vector<Course> course;
   activities activity;
 
   bool isValidID(const string& ID) {

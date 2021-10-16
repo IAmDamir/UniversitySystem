@@ -9,11 +9,9 @@
 #include <iostream>
 #include <map>
 
-#include "Activities.h"
-
 using namespace std;
 
-class ACM : public Activities{
+class ACM {
 public:
   explicit ACM(string topicOfTheDay = "No Topic", map<string, string> location = {{"Unknown City", "Unknown Address"}, {"empty city", "empty address"}}, int numberOfPresentations = 0);
   ~ACM();
@@ -27,11 +25,12 @@ public:
   void setNumberOfPresentations(int numberOfPresentations);
 
   friend ostream& operator<<(ostream& os, const ACM& acm);
+  friend istream& operator<<(istream& is, ACM& acm);
 
 protected:
-  int numberOfPresentations;
-  map<string, string> location;
   string topicOfTheDay;
+  map<string, string> location;
+  int numberOfPresentations{};
 };
 
 
