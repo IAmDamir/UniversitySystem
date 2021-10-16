@@ -6,7 +6,10 @@
 #ifndef UNIVERSITYSYSTEM_IEEE_H
 #define UNIVERSITYSYSTEM_IEEE_H
 
-#include "../AllIncludes.h"
+#include "iostream"
+#include <set>
+
+using namespace std;
 
 class IEEE {
 public:

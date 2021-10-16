@@ -6,11 +6,16 @@
 #ifndef UNIVERSITYSYSTEM_ACM_H
 #define UNIVERSITYSYSTEM_ACM_H
 
-#include "../AllIncludes.h"
+#include <iostream>
+#include <map>
 
-class ACM {
+#include "Activities.h"
+
+using namespace std;
+
+class ACM : public Activities{
 public:
-  ACM(string topicOfTheDay = "No Topic", map<string, string> location = {"Unknown City", "Unknown Address"}, int numberOfPresentations = 0);
+  explicit ACM(string topicOfTheDay = "No Topic", map<string, string> location = {{"Unknown City", "Unknown Address"}, {"empty city", "empty address"}}, int numberOfPresentations = 0);
   ~ACM();
 
   const string &getTopicOfTheDay() const;
@@ -21,10 +26,12 @@ public:
   void setLocation(const map<string, string> &location);
   void setNumberOfPresentations(int numberOfPresentations);
 
-private:
-  string topicOfTheDay;
-  map<string, string> location;
+  friend ostream& operator<<(ostream& os, const ACM& acm);
+
+protected:
   int numberOfPresentations;
+  map<string, string> location;
+  string topicOfTheDay;
 };
 
 

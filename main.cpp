@@ -1,6 +1,13 @@
 #include <iostream>
+#include "Activities/ACM.h"
+#include "Student.h"
+
+using namespace std;
 
 int main() {
-  std::cout << "Hello, World!" << std::endl;
+  ACM acm;
+  Student<ACM> student{acm};
+  std::cout << student;
+
   return 0;
 }
