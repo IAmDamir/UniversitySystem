@@ -107,6 +107,8 @@ public:
         const vector<Course>& courses1 = this->getCourse();
 
         for (const Course& course : courses1) {
+            // Could've also used
+            // if (find(courses.begin(), courses.end(), course) == courses.end())
             if (count(courses.begin(), courses.end(), course) == 0) {
                 isCoursesEqual = false;
             }
