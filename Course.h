@@ -12,27 +12,27 @@ using namespace std;
 
 class Course {
 public:
-  explicit Course(string nameOfTheCourse = "Unnamed", int numberOfStudentsEnrolled = 0, string lecturer = "Unknown");
-  ~Course();
+	explicit Course(string nameOfTheCourse = "Unnamed", int numberOfStudentsEnrolled = 0, string lecturer = "Unknown");
+	~Course();
 
-  friend ostream& operator<<(ostream& os, const Course& course);
+	friend ostream& operator<<(ostream& os, const Course& course);
 
-  const string &getNameOfTheCourse() const;
+	const string& getNameOfTheCourse() const;
 
-  void setNameOfTheCourse(const string &nameOfTheCourse);
+	void setNameOfTheCourse(const string& nameOfTheCourse);
 
-  int getNumberOfStudentsEnrolled() const;
+	int getNumberOfStudentsEnrolled() const;
 
-  void setNumberOfStudentsEnrolled(int numberOfStudentsEnrolled);
+	void setNumberOfStudentsEnrolled(int numberOfStudentsEnrolled);
 
-  const string &getLecturer() const;
+	const string& getLecturer() const;
 
-  void setLecturer(const string &lecturer);
+	void setLecturer(const string& lecturer);
 
 private:
-  string nameOfTheCourse;
-  int numberOfStudentsEnrolled;
-  string lecturer;
+	string nameOfTheCourse;
+	int numberOfStudentsEnrolled;
+	string lecturer;
 };
 
 

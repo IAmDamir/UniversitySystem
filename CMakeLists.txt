@@ -3,8 +3,8 @@ project(UniversitySystem)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(UniversitySystem main.cpp
-                Course.cpp Course.h
-        Activities/ACM.cpp Activities/ACM.h
-                Activities/IEEE.cpp Activities/IEEE.h
-        Student_impl.h Student.h)
+add_executable(ConsoleApplication11 main.cpp AllIncludes.h
+        Course.cpp Course.h
+        ACM.cpp ACM.h
+        IEEE.cpp IEEE.h
+        Student.cpp Student.h)
