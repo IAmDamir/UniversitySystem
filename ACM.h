@@ -27,6 +27,7 @@ public:
 
 	friend ostream& operator<<(ostream& os, const ACM& acm);
 	friend istream& operator<<(istream& is, ACM& acm);
+  bool operator==(const ACM acm) const;
 
 protected:
 	string topicOfTheDay;

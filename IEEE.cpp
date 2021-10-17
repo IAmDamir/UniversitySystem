@@ -65,3 +65,13 @@ void IEEE::setConferenceName(const string & conferenceName) {
 void IEEE::setTopicNames(const set<string> &topicNames) {
     IEEE::topicNames = topicNames;
 }
+
+bool IEEE::operator==(const IEEE ieee) const {
+  bool isTopicNamesEqual = this->getTopicNames() == ieee.getTopicNames();
+  bool isConferenceLocationEqual = this->getConferenceLocation() == ieee.getConferenceLocation();
+  bool isConferenceNameEqual = this->getConferenceName() == ieee.getConferenceName();
+
+  bool isEqual = isTopicNamesEqual && isConferenceLocationEqual && isConferenceNameEqual;
+
+  return isEqual;
+}

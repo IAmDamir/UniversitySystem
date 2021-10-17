@@ -12,16 +12,26 @@ Course::Course(string nameOfTheCourse, int numberOfStudentsEnrolled, string lect
 }
 
 ostream& operator<<(ostream& os, const Course& course) {
-	
+
 	os << "Name          Lecturer             Number of students\n";
 	os << setfill('-') << setw(68) << "-" << setfill(' ') << "" << left << endl;
 	os << setw(14) << course.getNameOfTheCourse() << left << setw(21) << course.getLecturer() << left << setw(7) << course.getNumberOfStudentsEnrolled() << left << endl;
 
-	//os << "The Course of student is: " << course.getNameOfTheCourse() << endl;
-	//os << "The name of the lecturer of this course is: " << course.getLecturer() << endl;
-	//os << "The number of the students of this course is: " << course.getNumberOfStudentsEnrolled() << endl;
-
 	return os;
+}
+
+istream &operator>>(istream &is, Course &course) {
+  string nameOfTheCourse;
+  int numberOfStudentsEnrolled;
+  string lecturer;
+
+  is >> nameOfTheCourse;
+  is >> numberOfStudentsEnrolled;
+  is >> lecturer;
+
+  course = Course(nameOfTheCourse, numberOfStudentsEnrolled, lecturer);
+
+  return is;
 }
 
 int Course::getNumberOfStudentsEnrolled() const {
@@ -46,6 +56,16 @@ void Course::setNameOfTheCourse(const string& nameOfTheCourse) {
 
 void Course::setLecturer(const string& lecturer) {
 	Course::lecturer = lecturer;
+}
+
+bool Course::operator==(const Course &course) const {
+  bool isNumberOfStudentsEnrolledEqual = this->getNumberOfStudentsEnrolled() == course.getNumberOfStudentsEnrolled();
+  bool isNameOfTheCourseEqual = this->getNameOfTheCourse() == course.getNameOfTheCourse();
+  bool isLecturerEqual = this->getLecturer() == course.getLecturer();
+
+  bool isEqual = isNumberOfStudentsEnrolledEqual && isNameOfTheCourseEqual && isLecturerEqual;
+
+  return isEqual;
 }
 
 Course::~Course() = default;

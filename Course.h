@@ -16,6 +16,8 @@ public:
 	~Course();
 
 	friend ostream& operator<<(ostream& os, const Course& course);
+  friend istream& operator>>(istream& is, Course& course);
+  bool operator==(const Course& course) const;
 
 	const string& getNameOfTheCourse() const;
 

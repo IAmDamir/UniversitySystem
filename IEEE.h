@@ -27,6 +27,7 @@ public:
 
 	friend ostream& operator<<(ostream& os, const IEEE& ieee);
 	friend istream& operator>>(istream& is, IEEE& ieee);
+  bool operator==(const IEEE ieee) const;
 
 private:
 	string name = "IEEE";

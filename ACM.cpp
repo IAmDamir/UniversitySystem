@@ -68,3 +68,13 @@ istream& operator<<(istream & is, ACM & acm) {
 
     return is;
 }
+
+bool ACM::operator==(const ACM acm) const {
+  bool isLocationEqual = this->getLocation() == acm.getLocation();
+  bool isNumberOfPresentationsEqual = this->getNumberOfPresentations() == acm.getNumberOfPresentations();
+  bool isTopicOfTheDayEqual = this->getTopicOfTheDay() == acm.getTopicOfTheDay();
+
+  bool isEqual = isLocationEqual && isNumberOfPresentationsEqual && isTopicOfTheDayEqual;
+
+  return isEqual;
+}

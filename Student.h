@@ -76,19 +76,49 @@ public:
         }
 
         return os;
-        /*
-        os << "The Name of student is: " << student.getName() << endl;
-        os << "The ID of student is: " << student.getID() << endl;
-        os << "The Age of student is: " << student.getAge() << endl;
-        vector<Course> courses = student.getCourse();
-        const auto f = [&os](const Course& course){};
-        os << student.getCourse();
-        os << student.getActivity();
-        return os;
-         */
     }
     friend istream& operator>>(istream& is, Student<activities> student) {
+        string name;
+        string ID;
+        int age{};
+        vector<Course> courses;
+        int numberOfCourses;
+        Course course;
+        activities activity;
+
+        is >> name;
+        is >> ID;
+        is >> age;
+        cout << numberOfCourses;
+        for (int i = 0; i < numberOfCourses; ++i) {
+          is >> course;
+          courses.push_back(course);
+        }
+        is >> activity;
+
+        student = Student(activity, name, ID, age, courses);
+
         return is;
+    }
+
+    bool operator==(const Student& student) const {
+        bool isCoursesEqual = true;
+        const vector<Course>& courses = student.getCourse();
+        const vector<Course>& courses1 = this->getCourse();
+
+        for (const Course& course : courses1) {
+            if (count(courses.begin(), courses.end(), course) == 0) {
+                isCoursesEqual = false;
+            }
+        }
+
+        bool isIDEqual = this->getID() == student.getID();
+        bool isAgesEqual = this->getAge() == student.getAge();
+        bool isActivitiesEqual = this->getActivity() == student.getActivity();
+
+        bool isEqual = isCoursesEqual && isIDEqual && isAgesEqual && isActivitiesEqual;
+
+        return isEqual;
     }
 
 private:
@@ -103,7 +133,7 @@ private:
             return false;
         }
 
-        return all_of(ID.begin(), ID.end(), [](const char& ch) {return isdigit(ch); });
+        return count_if(ID.begin(), ID.end(), [](char ch){return isdigit(ch);}) == 8;
     }
 };
 

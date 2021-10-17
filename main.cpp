@@ -24,5 +24,11 @@ int main() {
 	cout << course1;
 	cout << acm;
 	cout << ieee;
+
+  if (student == student3) {
+    cout << "true";
+  } else {
+    cout << "false";
+  }
 	return 0;
 }
